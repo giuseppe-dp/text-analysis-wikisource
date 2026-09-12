@@ -1,0 +1,71 @@
+I “data challenge” (36h) partono da un dataset e loro devono raggiungere un certo numero di obiettivi.
+
+Al termine di ogni data challenge gli studenti devono consegnare un report scritto in LaTeX che descrive i risultati conseguiti e include i plot. Ogni report deve essere *MAX DI TRE PAGINE* secondo le linee guida già diffuse. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Data Challenge 0 (prova). Linguistica quantitativa 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Lancio: 04/03/2025      
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Consegna facoltativa 24/03/2025   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+_________________________
+
+
+## NATURA DEI DATI E DOMANDE
+
+
+Consideriamo testi in lingue diverse e di vario tipo, scaricabili dal web. Per esempio qui c'è una [lista](https://bowdoin.libguides.com/text-mining/public) di siti dove fare text mining.
+ 
+Una fonte tipica di testi è [wikisource.org](https://wikisource.org/wiki/Main_Page), o anche [Gutenberg project](https://www.gutenberg.org/)
+(al momento non è oscurato in Italia). 
+
+Su [Kaggle](https://www.kaggle.com/) cercando "text mining" si trovano molti dataset, per esempio [questo](https://www.kaggle.com/datasets/xvivancos/star-wars-movie-scripts) e [questo](https://www.kaggle.com/datasets/shubhammaindola/harry-potter-books). 
+    
+Rimuovere punteggiatura e simboli e estrarre l’elenco di tutte le parole usate, rimuovendo punteggiatura e altri simboli che non sono parole.
+
+Per iniziare, il comando bash/awk
+
+cat little_red_rd_hood.txt  | awk '{gsub(" ","\n"); print tolower($0)}'  | sort -g | awk '{gsub(/[^a-z]/,"\n");print}' | awk 'NF==1' 
+
+crea un file di una colonna con tutte le parole, escludendo la punteggiatura 
+(ma non riconosce parole contratte)
+
+Il comando
+
+sort -g | uniq | wc -l
+
+conta il numero delle parole distinte nel file precedente
+
+etc. 
+
+Rispondere alle seguenti domande (supportando la risposta con dei plot)
+    
+a. Come aumenta il numero di parole distinte utilizzate con la lunghezza di un testo?
+    a1 - se si tronca uno stesso testo a lunghezze diverse
+    a2 - se confronto testi diversi (di lunghezza diversa)
+    
+b. come si comporta l’istogramma di occorrenza delle parole (numero, frazione, o densita’ di parole usate n volte)?
+    b1 - se si tronca uno stesso testo a lunghezze diverse
+    b2 - in testi diversi
+    
+c. Sfida aggiuntiva. Chiedersi se ci sono comportamenti simili in blocchi di lingue, affrontndo le domande a e b per testi in qualche lingua orientale (ideogrammi)
+
+
+## --- FORMA ---
+
+VINCOLI (per DC0)
+    (A) report lungo al massimo 2 pagine, comprese le figure (non è consentito usare font più piccoli di 10pt)
+    (B) massimo 2 result statement, quindi massimo 2 figure (un plot <=> un messaggio). Le figure possono eventualmente contenere più pannelli.
+
+Il report deve includere
+    (I)   sezione introduttiva 
+    (II)  sezione “Risultati” in cui si descrivono le domande poste e le risposte ottenute
+    (III) opzionalmente una sezione “Metodi” in cui si descrivono dettagli dei programmi, fit, manipolazioni dei dati, eccetera.
+    
+In questo caso i "risultati" sono semplicemente argomentazioni basate su visualizzazione dati che rispondono ad alcune delle domande (a-c) formulate sopra. 

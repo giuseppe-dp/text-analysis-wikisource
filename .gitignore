@@ -1,0 +1,11 @@
+venv/
+env/
+
+__pycache__/
+*.pyc
+
+*.csv
+books/
+books_words/
+latex
+DC0_TEXTS2026.txt
